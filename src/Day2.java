@@ -11,7 +11,7 @@ public class Day2 {
         System.out.println(compare);
 
         // 분수의 덧셈
-        int[] fraction = solution3(1,2,3,4);
+        int[] fraction = solution3(9,2,1,3);
         for(Object object:fraction){
             System.out.println(object);
         }
@@ -42,20 +42,20 @@ public class Day2 {
 
     static int[] solution3(int denum1, int num1, int denum2, int num2) {
         // 분모
-        int denominator = 0;
+        int denominator = num1*num2;
         // 분자
-        int molecule = 0;
-        if (num2 % num1 != 0) {
-            denominator = num1*num2;
-            molecule = (denum1*num2)+(denum2*num1);
-        } else {
-            denominator = num1>=num2? num1 : num2;
-            if(num1>=num2){
-                molecule = denum1 + denum2*(num1/num2);
-            } else {
-                molecule = denum1 * (num2 / num1) + denum2;
+        int molecule = (denum1*num2) + (denum2*num1);
+        // 최대공약수
+        int max = 0;
+
+        for(int i=1; i<=denominator && i<=molecule; i++){
+            if(denominator%i==0 && molecule%i==0){
+                max = i;
             }
         }
+
+        denominator = denominator/max;
+        molecule = molecule/max;
 
         int[] answer = {molecule, denominator};
         return answer;
