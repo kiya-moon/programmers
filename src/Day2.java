@@ -76,7 +76,7 @@ public class Day2 {
         }
         return answer;
 
-        // 화살표 함수 사용
+        // 스트림, 화살표 함수 사용
         // return Arrays.stream(numbers).map(i -> i*2).toArray();
     }
 }
