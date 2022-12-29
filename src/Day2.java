@@ -1,4 +1,5 @@
 import java.security.spec.RSAOtherPrimeInfo;
+import java.util.Arrays;
 
 public class Day2 {
     public static void main(String[] args){
@@ -13,6 +14,13 @@ public class Day2 {
         // 분수의 덧셈
         int[] fraction = solution3(9,2,1,3);
         for(Object object:fraction){
+            System.out.println(object);
+        }
+
+        // 배열 두 배 만들기
+        int[] numbers = {1, 2, 3, 4, 5};
+        int[] array = solution4(numbers);
+        for(Object object:array){
             System.out.println(object);
         }
     }
@@ -59,5 +67,16 @@ public class Day2 {
 
         int[] answer = {molecule, denominator};
         return answer;
+    }
+
+    static int[] solution4(int[] numbers){
+        int[] answer = numbers;
+        for(int i = 0; i < numbers.length; i++){
+            answer[i] = numbers[i]*2;
+        }
+        return answer;
+
+        // 화살표 함수 사용
+        // return Arrays.stream(numbers).map(i -> i*2).toArray();
     }
 }
