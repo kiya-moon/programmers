@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.stream.IntStream;
+import java.util.stream.Collectors;
 
 public class Day8 {
     public static void main(String[] args){
@@ -14,9 +14,9 @@ public class Day8 {
         System.out.println(age);
 
         // 진료 순서 정하기
-        int[] order = solution(new int[] {3, 76, 24});
-        for(int i : order){
-            System.out.println(order);
+        int[] order = solution(new int[] {1, 2, 3, 4, 5, 6, 7});
+        for(int i = 0; i < order.length; i++){
+            System.out.print(order[i] + ", ");
         }
     }
 
@@ -50,11 +50,13 @@ public class Day8 {
 
     static int[] solution(int[] emergency) {
         int[] answer = new int[emergency.length];
-        int[] temp = Arrays.copyOf(emergency, emergency.length);
-        Arrays.sort(temp);
+
+        // reverseOrder 사용해주기 위해서 Wrapper클래스로 박싱
+        Integer[] temp = Arrays.stream(emergency).boxed().toArray(Integer[]::new);
+        Arrays.sort(temp, Comparator.reverseOrder());
 
         // emergency 배열을 받아서 temp 배열에 역정렬해서 넣음
-        // emergency 배열과 비교해서 answer의 인덱스 값 반환
+        // emergency 배열과 비교해서 temp의 인덱스 값 answer 배열에 반환
 
         for(int i = 0; i < emergency.length; i++){
             for(int j = 0; j < temp.length; j++){
@@ -65,5 +67,8 @@ public class Day8 {
         }
 
         return answer;
+
+        // 한 줄 리턴
+//        return Arrays.stream(emergency).map(i -> Arrays.stream(emergency).boxed().sorted(Comparator.reverseOrder()).collect(Collectors.toList()).indexOf(i)+1).toArray();
     }
 }
