@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Day8 {
     public static void main(String[] args){
@@ -18,6 +19,12 @@ public class Day8 {
         for(int i = 0; i < order.length; i++){
             System.out.print(order[i] + ", ");
         }
+
+        System.out.println();
+
+        // 순서쌍의 개수
+        int count = solution4(100);
+        System.out.println(count);
     }
 
     static ArrayList solution(int[] numbers, int num1, int num2){
@@ -70,5 +77,20 @@ public class Day8 {
 
         // 한 줄 리턴
 //        return Arrays.stream(emergency).map(i -> Arrays.stream(emergency).boxed().sorted(Comparator.reverseOrder()).collect(Collectors.toList()).indexOf(i)+1).toArray();
+    }
+
+    static int solution4(int n){
+        int answer = 0;
+        int i = 1;
+        while(i <= n){
+            if(n % i == 0){
+                answer++;
+            }
+            i++;
+        }
+        return answer;
+
+        // IntStream 사용
+//        return IntStream.rangeClosed(1, n).filter(i -> n % i == 0).count();
     }
 }
