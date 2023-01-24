@@ -1,4 +1,5 @@
-import java.util.Arrays;
+import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -18,6 +19,9 @@ public class Day12 {
         // 숨어있는 숫자의 덧셈(1)
         int sum = solution3("aAb1B2cC34oOp");
         System.out.println(sum);
+
+        // 소인수분해
+        System.out.println(solution4(420));
 
     }
 
@@ -57,4 +61,19 @@ public class Day12 {
         return answer;
     }
 
+    static List solution4(int n){
+        List<Integer> answer = new ArrayList<>();
+        for(int i = 2; i <= n;){
+            if(n % i == 0){
+                answer.add(i);
+                n /= i;
+            } else {
+                i++;
+            }
+        }
+        return answer.stream().distinct().collect(Collectors.toList());
+
+        // hashSet 사용하면 중복 없이 값을 넣을 수 있지만
+        // 순서 없이 들어가기 때문에 프로그래머스 테스트에서 통과를 못함
+    }
 }
