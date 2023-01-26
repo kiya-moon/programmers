@@ -6,6 +6,10 @@ public class Day13 {
     public static void main(String[] args) {
         // 컨트롤 제트
         System.out.println(solution("-1 -2 -3 Z"));
+
+        // 배열 원소의 길이
+        Arrays.stream(solution(new String[]{"We", "are", "the", "world!"})).forEach(i -> System.out.print(i + " "));
+
     }
 
     static int solution(String s){
@@ -27,5 +31,19 @@ public class Day13 {
         answer = nums.stream().mapToInt(Integer::intValue).sum();
 
         return answer;
+    }
+
+    static int[] solution(String[] strlist){
+        int[] answer = new int[strlist.length];
+
+        for(int i = 0; i < strlist.length; i++){
+            String s = strlist[i];
+            answer[i] = (int)Arrays.stream(s.split("")).count();
+        }
+
+        return answer;
+
+        // 한 줄 리턴
+//        return Arrays.stream(strlist).mapToInt(String::length).toArray();
     }
 }
