@@ -1,6 +1,6 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Day13 {
     public static void main(String[] args) {
@@ -10,6 +10,10 @@ public class Day13 {
         // 배열 원소의 길이
         Arrays.stream(solution(new String[]{"We", "are", "the", "world!"})).forEach(i -> System.out.print(i + " "));
 
+        System.out.println();
+
+        // 중복된 문자 제거
+        System.out.println(solution3("people"));
     }
 
     static int solution(String s){
@@ -30,6 +34,19 @@ public class Day13 {
 
         answer = nums.stream().mapToInt(Integer::intValue).sum();
 
+        // Stack 이용하는 방법
+//        Stack<Integer> stack = new Stack<>();
+//        for(String str : s.split(" ")){
+//            if(str.equals("Z")){
+//                stack.pop();
+//            } else{
+//                stack.push(Integer.parseInt(str));
+//            }
+//        }
+//        for(int i : stack){
+//            answer += i;
+//        }
+
         return answer;
     }
 
@@ -45,5 +62,26 @@ public class Day13 {
 
         // 한 줄 리턴
 //        return Arrays.stream(strlist).mapToInt(String::length).toArray();
+    }
+
+    static String solution3(String my_string){
+        String answer = "";
+        List<String> arr = new ArrayList<>();
+        for(int i = 0; i < my_string.length(); i++){
+            if(!arr.contains(String.valueOf(my_string.charAt(i)))){
+                arr.add(String.valueOf(my_string.charAt(i)));
+            }
+        }
+
+        // LinkedHashSet 사용
+//        Set<String> arr = new LinkedHashSet<>(Arrays.asList(my_string.split("")));
+
+        answer = String.join("", arr);
+
+        return answer;
+
+        // 한 줄 리턴
+        // 나도 이렇게 하고 싶었다규ㅠㅠㅠㅠ
+//        return Arrays.stream(my_string.split("")).distinct().collect(Collectors.joining());
     }
 }
