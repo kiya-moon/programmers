@@ -14,6 +14,9 @@ public class Day13 {
 
         // 중복된 문자 제거
         System.out.println(solution3("people"));
+
+        // 삼각형의 완성조건(1)
+        System.out.println(solution(new int[] {199, 72, 222}));
     }
 
     static int solution(String s){
@@ -83,5 +86,15 @@ public class Day13 {
         // 한 줄 리턴
         // 나도 이렇게 하고 싶었다규ㅠㅠㅠㅠ
 //        return Arrays.stream(my_string.split("")).distinct().collect(Collectors.joining());
+    }
+
+    static int solution(int[] sides){
+        int longSide = Arrays.stream(sides).max().getAsInt();
+        System.out.println(Arrays.stream(sides).filter(i -> i == longSide).distinct().toString());
+        if(longSide < Arrays.stream(sides).filter(i -> i == longSide).distinct().sum()){
+            return 1;
+        } else {
+            return 2;
+        }
     }
 }
