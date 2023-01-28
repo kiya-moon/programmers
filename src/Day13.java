@@ -16,7 +16,7 @@ public class Day13 {
         System.out.println(solution3("people"));
 
         // 삼각형의 완성조건(1)
-        System.out.println(solution(new int[] {199, 72, 222}));
+        System.out.println(solution(new int[] {2, 2, 3}));
     }
 
     static int solution(String s){
@@ -90,11 +90,21 @@ public class Day13 {
 
     static int solution(int[] sides){
         int longSide = Arrays.stream(sides).max().getAsInt();
-        System.out.println(Arrays.stream(sides).filter(i -> i == longSide).distinct().toString());
-        if(longSide < Arrays.stream(sides).filter(i -> i == longSide).distinct().sum()){
+        int sum = 0;
+
+        Arrays.sort(sides);
+
+        for(int i = 0; i < sides.length - 1; i++){
+            sum += sides[i];
+        }
+
+        if(longSide < sum){
             return 1;
         } else {
             return 2;
         }
+
+        // 삼항연산자로 리턴
+//        return sides[2] >= sides[0] + sides[1] ? 2 : 1;
     }
 }
