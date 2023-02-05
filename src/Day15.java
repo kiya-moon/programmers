@@ -3,6 +3,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Day15 {
     public static void main(String[] args) {
@@ -11,6 +12,13 @@ public class Day15 {
 
         // 인덱스 바꾸기
         System.out.println(solution("I love you", 3, 6));
+
+        // 한 번만 등장한 문자
+        System.out.println(solution3("abcabcadc"));
+
+        // 약수 구하기
+        System.out.println(solution(24));
+
     }
 
     static long solution(String numbers){
@@ -56,5 +64,32 @@ public class Day15 {
 //        List<String> list = Arrays.stream(my_string.split("")).collect(Collectors.toList());
 //        Collections.swap(list, num1, num2);
 //        return String.join("", list);
+    }
+
+    static String solution3(String s){
+        char[] alphabet = new char[26];
+        for (int i = 0; i < s.length(); i++) {
+            alphabet[s.charAt(i) - 97]++;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < alphabet.length; i++) {
+            if (alphabet[i] == 1) sb.append((char) (i + 97));
+        }
+
+        return sb.toString();
+    }
+
+    static int[] solution(int n){
+        List<Integer> list = new ArrayList();
+        for(int i = 1; i <= n; i++){
+            if(n % i == 0){
+                list.add(i);
+            }
+        }
+        return list.stream().mapToInt(x -> x).toArray();
+
+        // 한 줄 리턴
+//        return IntStream.rangeClosed(1, n).filter(i -> n % i == 0).toArray();
     }
 }
