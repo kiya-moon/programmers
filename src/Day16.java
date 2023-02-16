@@ -10,6 +10,9 @@ public class Day16 {
         for(int i : answer){
             System.out.println(i);
         }
+
+        // 문자열 계산하기
+        System.out.println(solution3("1 + 1 + 1"));
     }
 
     public static int solution(String message){
@@ -27,4 +30,18 @@ public class Day16 {
         int[] answer = {max, idx};
         return answer;
     }
+
+    public static int solution3(String my_string){
+        String[] temp = my_string.split(" ");
+        int answer = Integer.parseInt(temp[0]);
+        for(int i = 1; i < temp.length; i++){
+            if(temp[i].equals("+")){
+                answer += Integer.parseInt(temp[i + 1]);
+            } else if(temp[i].equals("-")) {
+                answer -= Integer.parseInt(temp[i + 1]);
+            }
+        }
+        return answer;
+    }
+
 }
