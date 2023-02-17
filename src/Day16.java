@@ -13,6 +13,9 @@ public class Day16 {
 
         // 문자열 계산하기
         System.out.println(solution3("1 + 1 + 1"));
+
+        // 배열의 유사도
+        System.out.println(solution(new String[] {"n", "omg"}, new String[] {"m", "dot"}));
     }
 
     public static int solution(String message){
@@ -39,6 +42,18 @@ public class Day16 {
                 answer += Integer.parseInt(temp[i + 1]);
             } else if(temp[i].equals("-")) {
                 answer -= Integer.parseInt(temp[i + 1]);
+            }
+        }
+        return answer;
+    }
+
+    public static int solution(String[] s1, String s2[]){
+        int answer = 0;
+        for(int i = 0; i < s1.length; i++){
+            for(int j = 0; j < s2.length; j++){
+                if(s1[i].equals(s2[j])){
+                    answer++;
+                }
             }
         }
         return answer;
