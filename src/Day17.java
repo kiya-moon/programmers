@@ -63,13 +63,45 @@ public class Day17 {
         String[] temp = {};
         for(String s : quiz){
             temp = s.split(" ");
+
+            // 내 풀이
             if(temp[1].equals("-")){
                 list.add((Integer.parseInt(temp[0])) - Integer.parseInt(temp[2]) == Integer.parseInt(temp[4]) ? "O" : "X");
             } else {
                 list.add((Integer.parseInt(temp[0])) + Integer.parseInt(temp[2]) == Integer.parseInt(temp[4]) ? "O" : "X");
             }
+
+            // 같은 풀이 다른 느낌
+//            int X = Integer.parseInt(temp[0]);
+//            int Y = Integer.parseInt(temp[2]);
+//            int Z = Integer.parseInt(temp[4]);
+//            int cal = 0;
+//            if(temp[1].equals("-")){
+//                cal = X - Y;
+//            } else {
+//                cal = X + Y;
+//            }
+//            list.add(Z == cal ? "O" : "X");
+
+            // 간단한 이번 풀이 같은 경우에는 내 풀이도 괜찮을 것 같지만,
+            // 식이 길어질 땐 값마다 Integer.parseInt()를 붙이는 것은 비효율적이니 두 번째 풀이가 나을 것 같다.
+
+            // 음수, 양수에 따라 1 또는 -1을 곱하는 셈법
+            // 매우 깔끔함
+//            int result = Integer.parseInt(temp[0]) + (Integer.parseInt(temp[2]) * (temp[1].equals("-") ? -1 : 1));
+//            list.add(result == Integer.parseInt(temp[4]) ? "O" : "X");
         }
+
         answer = list.toArray(new String[list.size()]);
         return answer;
+
+        // 희표좌의 Stream 매직...
+//        return Arrays.stream(quiz).map(s -> {
+//            String[] arr = s.trim().split(" ");
+//            return arr[1].equals("+") && Integer.parseInt(arr[0]) + Integer.parseInt(arr[2]) == Integer.parseInt(arr[4])
+//                    || Integer.parseInt(arr[0]) - Integer.parseInt(arr[2]) == Integer.parseInt(arr[4]) ? "O" : "X";
+//        }).toArray(String[]::new);
     }
+
+
 }
