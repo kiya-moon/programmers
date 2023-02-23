@@ -26,5 +26,6 @@ public class Day18 {
 
         // Math 메서드
 //        return n % Math.sqrt(n) == 0 ? 1 : 2;
+
     }
 }
