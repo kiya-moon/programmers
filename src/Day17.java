@@ -102,6 +102,4 @@ public class Day17 {
 //                    || Integer.parseInt(arr[0]) - Integer.parseInt(arr[2]) == Integer.parseInt(arr[4]) ? "O" : "X";
 //        }).toArray(String[]::new);
     }
-
-
 }
