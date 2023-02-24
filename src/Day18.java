@@ -9,6 +9,9 @@ public class Day18 {
 
         // 제곱수 판별하기
         System.out.println(solution(976));
+
+        // 세균 증식
+        System.out.println(solution(2, 10));
     }
 
     public static int solution(String str1, String str2){
@@ -26,6 +29,17 @@ public class Day18 {
 
         // Math 메서드
 //        return n % Math.sqrt(n) == 0 ? 1 : 2;
+    }
 
+    public static int solution(int n, int t){
+        int answer = n;
+        for(int i = 1; i <= t; i++){
+            answer *= 2;
+        }
+
+        // 비트 쉬프트 연산자 사용
+//        answer = n << t;
+
+        return answer;
     }
 }
