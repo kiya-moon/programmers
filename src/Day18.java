@@ -1,5 +1,6 @@
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Day18 {
@@ -12,6 +13,9 @@ public class Day18 {
 
         // 세균 증식
         System.out.println(solution(2, 10));
+
+        // 문자열 정렬하기
+        System.out.println(solution("Bcad"));
     }
 
     public static int solution(String str1, String str2){
@@ -41,5 +45,19 @@ public class Day18 {
 //        answer = n << t;
 
         return answer;
+    }
+
+    public static String solution(String my_string){
+        StringBuilder sb = new StringBuilder();
+        List list = Arrays.stream(my_string.toLowerCase().split("")).sorted().collect(Collectors.toList());
+        for(Object o : list){
+            sb.append(o);
+        }
+        return sb.toString();
+
+        // 아... joining을 생각 못해서 StringBuilder를 썼음............;ㅅ;
+//        return Arrays.stream(my_string.toLowerCase().split("")).sorted().collect(Collectors.joining());
+
+
     }
 }
