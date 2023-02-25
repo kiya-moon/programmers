@@ -58,6 +58,9 @@ public class Day18 {
         // 아... joining을 생각 못해서 StringBuilder를 썼음............;ㅅ;
 //        return Arrays.stream(my_string.toLowerCase().split("")).sorted().collect(Collectors.joining());
 
-
+        // char배열 사용
+//        char[] c = my_string.toLowerCase().toCharArray();
+//        Arrays.sort(c);
+//        return new String(c);
     }
 }
